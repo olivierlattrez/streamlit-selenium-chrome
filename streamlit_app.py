@@ -39,7 +39,13 @@ Fork this repo, and edit `/streamlit_app.py` to customize this app to your heart
 st.title("Simple Email and Phone Number Input App")
 
 # Create input fields for email and phone number
-email = st.text_input("Enter your Name:")
+name_str = st.text_input("Enter your Name:")
 phone = st.text_input("Enter your phone number:")
 
-st.write(google_search("Bastiaan Augustyn"))
+# When the "OK" button is pressed
+if st.button("OK"):
+    if name_str and phone:
+        results = google_search(name_str)
+
+        for result in results:
+            st.write(result)
