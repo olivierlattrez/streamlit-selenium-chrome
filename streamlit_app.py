@@ -42,4 +42,4 @@ st.title("Simple Email and Phone Number Input App")
 email = st.text_input("Enter your Name:")
 phone = st.text_input("Enter your phone number:")
 
-print(google_search(email))
+st.write(google_search("Bastiaan Augustyn"))
