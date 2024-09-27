@@ -1,5 +1,5 @@
 import streamlit as st
-
+from scraper import google_search
 """
 ## Web scraping on Streamlit Cloud with Selenium
 
