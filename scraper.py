@@ -6,23 +6,36 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
+from selenium.webdriver.chrome.options import Options
 
 
 # Function to initialize the WebDriver
+# def initialize_driver():
+#     options = webdriver.ChromeOptions()
+#     # Set headless to False to see the browser
+#     # options.add_argument("--headless")  # Uncomment this line for headless mode
+#     options.add_argument("--no-sandbox")
+#     options.add_argument("--disable-dev-shm-usage")
+#     #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+#     driver = webdriver.Chrome(
+#         service=Service(
+#             ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+#         ),
+#         options=options,
+#     )
+#     return driver
+
 def initialize_driver():
-    options = webdriver.ChromeOptions()
-    # Set headless to False to see the browser
-    # options.add_argument("--headless")  # Uncomment this line for headless mode
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-    driver = webdriver.Chrome(
-        service=Service(
-            ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
-        ),
-        options=options,
-    )
-    return driver
+    options = Options()
+    options.add_argument("--disable-gpu")
+    options.add_argument("--headless")
+
+    return webdriver.Chrome(
+            service=Service(
+                ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+            ),
+            options=options,
+        )
 
 # Function to perform a Google search and retrieve results
 def google_search(query):
