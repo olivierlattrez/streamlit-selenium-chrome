@@ -47,5 +47,7 @@ if st.button("OK"):
     if name_str and phone:
         results = google_search(name_str)
 
+        st.write(len(results))
+
         for result in results:
             st.write(result)
